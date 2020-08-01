@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myData"></div>
+    <script>
+      fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+          "x-rapidapi-key":
+            "a421ee5851msh71c23d8dd211ccep1902efjsnd4687af99c52",
+        },
+      })
+        .then(function (response) {
+          return response.json();
+          response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
+        })
+        .then(function (data) {
+          console.log(data);
+          function tabulate(data, columns) {
+            var table = d3.select("body").append("table");
+            var thead = table.append("thead");
+            var tbody = table.append("tbody");
+
+            // append the header row
+            thead
+              .append("tr")
+              .selectAll("th")
+              .data(columns)
+              .enter()
+              .append("th")
+              .text(function (column) {
+                return column;
+              });
+
+            // create a row for each object in the data
+            var rows = tbody.selectAll("tr").data(data).enter().append("tr");
+
+            // create a cell in each row for each column
+            var cells = rows
+              .selectAll("td")
+              .data(function (row) {
+                return columns.map(function (column) {
+                  return { column: column, value: row[column] };
+                });
+              })
+              .enter()
+              .append("td")
+              .text(function (d) {
+                return d.value;
+              });
+
+            return table;
+          }
+
+          // render the table(s)
+          tabulate(data.countries_stat, [
+            "active_cases",
+            "cases",
+            "country_name",
+            "deaths",
+            "deaths_per_1m_population",
+            "new_cases",
+            "serious_critical",
+            "tests_per_1m_population",
+            "total_cases_per_1m_population",
+            "total_recovered",
+            "total_tests",
+          ]); // 2 column table
+        })
+        .catch(function (err) {
+          console.log("error: " + err);
+        });
+    </script>
+  </body>
+</html>
