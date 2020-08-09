@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myChart" height="500px" width="500px"></canvas>
+    <script>
+      fetch("https://corona-virus-world-and-india-data.p.rapidapi.com/api", {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "corona-virus-world-and-india-data.p.rapidapi.com",
+          "x-rapidapi-key":
+            "a421ee5851msh71c23d8dd211ccep1902efjsnd4687af99c52",
+        },
+      })
+        .then(function (response) {
+          return response.json();
+          response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=None");
+        })
+        .then(function (data) {
+          console.log(data);
+          const mappedJson = {
+            countries: data.countries_stat.map((e) => e.country_name),
+            cases: data.countries_stat.map((e) => e.cases),
+          };
+          const newchar = "";
+          const newy = mappedJson.cases.map((e) => e.split(",").join(newchar));
+
+          const YAxis = newy.map((e) => Math.log10(e));
+          var data = {
+            labels: mappedJson.countries,
+            datasets: [
+              {
+                label: "Corona Cases Vs Countries",
+                backgroundColor: "rgba(255,99,132,0.2)",
+                borderColor: "rgba(255,99,132,1)",
+                borderWidth: 2,
+                hoverBackgroundColor: "rgba(0, 0, 0, 1)",
+                hoverBorderColor: "rgba(255,99,132,1)",
+                data: YAxis,
+              },
+            ],
+          };
+          var options = {
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Corona Cases(Log Scale)",
+                    fontSize: 18,
+                    fontStyle: "bold",
+                  },
+                  stacked: true,
+                  gridLines: {
+                    display: true,
+                    color: "rgba(255,99,132,0.2)",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Countries",
+                    fontSize: 18,
+                    fontStyle: "bold",
+                  },
+                  gridLines: {
+                    display: false,
+                  },
+                },
+              ],
+            },
+          };
+          var ctx = document.getElementById("myChart").getContext("2d");
+          var myBarChart = new Chart(ctx, {
+            type: "bar",
+            data: data,
+            options: options,
+          });
+        });
+    </script>
+  </body>
+</html>
