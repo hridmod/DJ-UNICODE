@@ -1,7 +1,7 @@
 var axios = require("axios");
 var express = require("express");
 var app = express();
-var newy = [];
+
 app.get("/:category", function (req, res) {
   var url =
     "https://sv443.net/jokeapi/v2/joke/" + req.params.category + "?type=single";

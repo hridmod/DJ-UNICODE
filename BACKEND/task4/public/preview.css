@@ -1,0 +1,83 @@
+body {
+  background-image: url(https://images.unsplash.com/photo-1516410529446-2c777cb7366d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+  background-position: center;
+  background-repeat: repeat;
+  margin-top: 100px;
+}
+
+h1 {
+  font-weight: bold;
+}
+table {
+  width: 400px;
+  border-radius: 20px;
+  font-family: Nunito;
+}
+
+th {
+  text-align: right;
+}
+
+td {
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  background-color: #ddd;
+}
+
+.edit {
+  background-color: #000000;
+  opacity: 0.6;
+  font-size: 15px;
+  display: block;
+  margin: 20px 0px 0px 20px;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid #366473;
+  padding: 14px 10px;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.25px;
+  position: relative;
+  left: 490px;
+  top: 10px;
+  width: 25%;
+}
+
+button:hover {
+  background-color: black;
+}
+
+.name:hover {
+  color: goldenrod;
+}
+
+span:hover {
+  background-image: linear-gradient(to right, cyan, white);
+  color: black;
+}
+
+button:hover {
+  background-color: #000000;
+  opacity: 1;
+}
+
+.name:hover {
+  color: goldenrod;
+}
+
+span:hover {
+  background-image: linear-gradient(to right, cyan, white);
+  color: black;
+}

@@ -28,18 +28,22 @@
             cases: data.countries_stat.map((e) => e.cases),
           };
           const newchar = "";
-          const newy = mappedJson.cases.map((e) => e.split(",").join(newchar));
+          const withoutComma = mappedJson.cases.map((e) =>
+            e.split(",").join(newchar)
+          );
 
-          const YAxis = newy.map((e) => Math.log10(e));
+          const temp = withoutComma.map((e) => Math.log10(e));
+          const YAxis = temp.slice(0, 51);
+          const XAxis = mappedJson.countries.slice(0, 51);
           var data = {
-            labels: mappedJson.countries,
+            labels: XAxis,
             datasets: [
               {
                 label: "Corona Cases Vs Countries",
-                backgroundColor: "rgba(255,99,132,0.2)",
+                backgroundColor: "rgba(0, 0, 0, 1)",
                 borderColor: "rgba(255,99,132,1)",
                 borderWidth: 2,
-                hoverBackgroundColor: "rgba(0, 0, 0, 1)",
+                hoverBackgroundColor: "rgba(255,99,132,0.2)",
                 hoverBorderColor: "rgba(255,99,132,1)",
                 data: YAxis,
               },
@@ -67,7 +71,7 @@
                 {
                   scaleLabel: {
                     display: true,
-                    labelString: "Countries",
+                    labelString: "Countries(Top 50)",
                     fontSize: 18,
                     fontStyle: "bold",
                   },

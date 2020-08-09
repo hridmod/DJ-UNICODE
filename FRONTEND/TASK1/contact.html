@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+    <!-- Bootstrap:4.5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bodyLogin">
+    <div class="box" class="loginForm">
+      <div id="error_message"></div>
+      <form id="myform" onsubmit=" return validate();">
+        <span class="text-center">CONTACT ME</span>
+        <div class="input-container">
+          <input type="text" name="firstname" id="name" />
+          <label>FIRSTNAME</label>
+        </div>
+        <div class="input-container">
+          <input type="text" name="lastname" id="lname" />
+          <label>LASTNAME</label>
+        </div>
+        <div class="input-container">
+          <input type="text" name="username" id="email" />
+          <label>EMAIL ID</label>
+        </div>
+        <div class="input-container">
+          <input type="text" name="phone" id="phone" />
+          <label>PHONE NO</label>
+        </div>
+        <div class="input-container">
+          <label>MESSAGE</label><br />
+          <textarea placeholder="Message" id="message"></textarea>
+        </div>
+        <button type="submit" class="loginButton" id="submitButton">
+          SUBMIT
+        </button>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
