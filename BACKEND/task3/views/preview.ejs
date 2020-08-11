@@ -20,11 +20,29 @@
     <link rel="stylesheet" type="text/css" href="/preview.css" />
   </head>
   <body>
- <% for(var i=0;i<arr1.length;i++) %>
-<ol>
-  <li><%=arr1[i].first_name %></li>
-  <li><%=arr1[i].last_name %></li>
-</ol>
+    <div class="container">
+      <h1 id="header">Students</h1>
+      <table>
+        <thead>
+          <tr>
+            <th><h2>First name</h2></th>
+            <th><h2>Last name</h2></th>
+            <th><h2>English</h2></th>
+            <th><h2>Math</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% arr1.forEach((student)=> { %>
+          <tr>
+            <td data-label="firstName"><h3><%=student.firstName%></h3></td>
+            <td data-label="lastName"><h3><%=student.lastName%></h3></td>
+            <td data-label="Maths"><h3><%=student.score.Maths%></h3></td>
+            <td data-label="English"><h3><%=student.score.English %></h3></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
     <a href="/forms"><button class="edit" type="submit">EDIT</button></a>
   </body>
 </html>

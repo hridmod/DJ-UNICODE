@@ -57,17 +57,27 @@
           <input
             class="firstname"
             type="text"
-            name="first_name"
+            name="student[first_name]"
             required
           /><br />
           <label class="firstlabel">FIRST NAME</label>
-          <input class="lastname" type="text" name="last_name" required />
+          <input
+            class="lastname"
+            type="text"
+            name="student[last_name]"
+            required
+          />
           <label class="lastlabel">LAST NAME</label>
         </div>
         <h2 class="name">MATHS</h2>
-        <input class="code" type="number" name="Maths" /><br />
+        <input
+          class="number"
+          type="number"
+          name="student[Maths]"
+          required
+        /><br />
         <h2 class="name">ENGLISH</h2>
-        <input class="number" type="number" name="English" required />
+        <input class="number" type="number" name="student[English]" required />
         <a href="/preview"><button type="submit">SUBMIT</button></a>
       </form>
     </div>
