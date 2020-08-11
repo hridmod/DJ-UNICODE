@@ -1,4 +1,5 @@
 /**JAVASCRIPT FUNCTIONS TO MAKE PAGE MORE USER FRIENDLY AND RESPONSIVE */
+AOS.init();
 function validate() {
   var name = document.getElementById("name").value;
   var surname = document.getElementById("lname").value;
